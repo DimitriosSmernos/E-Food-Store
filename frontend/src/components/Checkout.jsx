@@ -7,6 +7,7 @@ import Button from "./UI/Button";
 import UserProgressContext from "../store/UserProgressContext";
 import useHttp from "../hooks/useHttp";
 import Error from "./Error";
+import { API_URL } from "../config";
 
 const requestConfig = {
   method: "POST",
@@ -25,7 +26,7 @@ export default function Checkout() {
     error,
     sendRequest,
     clearData,
-  } = useHttp("http://localhost:3000/orders", requestConfig);
+  } = useHttp(`${API_URL}/orders`, requestConfig);
 
   const cartTotal = cartCtx.items.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,
@@ -60,7 +61,7 @@ export default function Checkout() {
 
     // // AYTOS EINAI O PROTOS TROPOS NA POST THN PARAGELIA
     //   //tha kanoume post sto backend edo , na kataxorithei i paraggelia
-    //   fetch("http://localhost:3000/orders", {
+    //   fetch(`${API_URL}/orders`, {
     //     method: "POST",
     //     headers: {
     //       "Content-Type": "application/json",

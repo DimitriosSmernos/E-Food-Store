@@ -1,6 +1,7 @@
 import MealItem from "./MealItem";
 import useHttp from "../hooks/useHttp";
 import Error from "./Error"
+import { API_URL } from "../config";
 
 //auto to dimiourgoume edo, gt ean to dimiourgoysame mesa sto component tha etrexe 
 //kathe fora kai kathe fora tha dimiourgoyntan neo object kai tha xanaetrexe to useHttp
@@ -11,7 +12,7 @@ export default function Meals() {
     data: loadedMeals,
     isLoading,
     error,
-  } = useHttp("http://localhost:3000/meals", requestConfig, []);
+  } = useHttp(`${API_URL}/meals`, requestConfig, []);
 
   if (isLoading){
     return <p className="center">Fetching Meals...</p>
